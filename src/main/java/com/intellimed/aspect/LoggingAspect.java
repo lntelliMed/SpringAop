@@ -54,7 +54,10 @@ public class LoggingAspect {
 		System.out.println("Exception was thrown! " + ex);
 
 	}
-	@Around("allGetters()")
+	
+	
+	//@Around("allGetters()")
+	@Around("@annotation(com.intellimed.aspect.Loggable)")
 	public Object myAroundAdvice(ProceedingJoinPoint proceedingJoinPoint){
 		
 		Object returnedObject = null;
@@ -87,5 +90,8 @@ public class LoggingAspect {
 	//@Pointcut("execution(* * com.intellimed.model.Circle.*(..))")
 	@Pointcut("within(com.intellimed.model.Circle)")
 	public void allCircleMethods() {}
+	
+	@Pointcut("execution(* com.intellimed.service.*Service.*(..))")
+	public void allServiceMethods(){}
 
 }

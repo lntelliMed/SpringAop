@@ -1,9 +1,12 @@
 package com.intellimed.model;
 
+import com.intellimed.aspect.Loggable;
+
 public class Circle {
 
 	private String name;
 
+	@Loggable
 	public String getName() {
 		return name;
 	}
