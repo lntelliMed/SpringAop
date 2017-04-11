@@ -1,9 +1,11 @@
 package com.intellimed.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -52,6 +54,27 @@ public class LoggingAspect {
 		System.out.println("Exception was thrown! " + ex);
 
 	}
+	@Around("allGetters()")
+	public Object myAroundAdvice(ProceedingJoinPoint proceedingJoinPoint){
+		
+		Object returnedObject = null;
+		
+		try {
+			System.out.println("Around - Before..");
+			returnedObject = proceedingJoinPoint.proceed();
+			System.out.println("Around - After returning..");
+
+		} catch (Throwable e) {
+			System.out.println("Around - After throwing..");
+
+		}
+		
+		System.out.println("Around - After finally..");
+		return returnedObject;
+	}
+	
+	
+	
 	
 	//@Before("execution(public String com.intellimed.model.Circle.getName())")
 	//@Before("execution(* get*())")
