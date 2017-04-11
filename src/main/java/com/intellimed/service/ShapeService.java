@@ -7,6 +7,7 @@ public class ShapeService {
 	private Circle circle;
 	private Triangle triangle;
 	public Circle getCircle() {
+		System.out.println("Returning a circle");
 		return circle;
 	}
 	public void setCircle(Circle circle) {

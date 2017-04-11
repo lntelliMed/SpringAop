@@ -94,4 +94,7 @@ public class LoggingAspect {
 	@Pointcut("execution(* com.intellimed.service.*Service.*(..))")
 	public void allServiceMethods(){}
 
+	public void myAdvice(){
+		System.out.println("Calling the advice manually through a proxy object and not via Spring!");
+	}
 }
